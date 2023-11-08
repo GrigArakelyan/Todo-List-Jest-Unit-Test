@@ -1,0 +1,80 @@
+.todo{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 5px 0;
+   .input{
+      padding: 30px;
+      border: none;
+   } 
+   p{
+      text-align: left;
+      width: 75%;
+      font-size: 18px;
+      color: black;
+      margin: 0;
+      padding: 0 5px;
+   }
+   button{
+      border: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      background-color: rgb(178, 193, 241);
+      border-radius: 10px;
+   }
+}
+
+.todos{
+   width: 40vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 50px auto;
+}
+.addTodo{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 20px 0;
+   input{
+      width: 75%;
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      border-bottom: 1px solid;
+      &:focus{
+         outline: none;
+      }
+   }
+   button{
+      border: none;
+      font-size: 18px;
+      padding: 10px 15px;      
+      background-color: rgb(178, 193, 241);
+      border-radius: 10px;
+   }
+}
+
+.todoFooter{
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-top: 1px solid;
+   margin: 15px 0;
+   .text{
+      font-size: 18px;
+      color: black;
+      line-height: 22px;
+      padding: 20px 0;
+   }
+   button{
+      border: none;
+      font-size: 18px;
+      padding: 10px 15px;      
+      background-color: rgb(178, 193, 241);
+      border-radius: 10px;
+   }
+}
