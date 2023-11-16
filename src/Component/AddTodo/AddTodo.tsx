@@ -1,17 +1,35 @@
-import React, {FC} from "react"
+import React, {FC, useState} from "react"
 import "../todo.scss"
+import { TodoType } from "../../todos"
 
 type AddTodoProps = {
-   addTodo: (event:React.FormEvent<HTMLFormElement>) => void,
-   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-   value: string
+   todos: TodoType[];
+   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+ 
 }
 
-const AddTodo:FC<AddTodoProps> = ({addTodo, onChange, value}) => {
+const AddTodo:FC<AddTodoProps> = ({  setTodos, todos}) => {
+   const [value, setValue] = useState("");
+
+   const addTodo:(event:React.FormEvent<HTMLFormElement>) => void = (event) => {
+      event.preventDefault()
+      if(value){
+         setTodos([...todos, {
+            id: Math.random(),
+            title: value,
+            completed: false
+         }]);
+      }
+      setValue("");
+   }
+
+   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value)
+   }
 
    
    return(
-      <form onSubmit={addTodo} className="addTodo">
+      <form data-testid="data-testid" onSubmit={addTodo} className="addTodo">
          <input type="text" placeholder="Add Todo" 
             value={value}
             onChange={onChange}

@@ -1,21 +1,24 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import { TodoType } from "../../todos"
 import "../todo.scss"
 
 type TodoFoterProps = {
-   removeCompleted: () => void,
+   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>,
    todos: TodoType[],
-   completed: TodoType[]
 }
 
-const TodoFooter:FC<TodoFoterProps> = ({removeCompleted, todos, completed}) => {
+const TodoFooter:FC<TodoFoterProps> = ({setTodos, todos}) => {
+
+   const removeCompleted = () => {
+      setTodos(todos.filter(todo => todo.completed === false))
+   }
    
-   // const completedTodo = todos.filter(todo => todo.completed)
+   const completedTodo = todos.filter(todo => todo.completed)
   
 
    return (
       <div className="todoFooter">
-         <div className="text">{`${completed.length}/${todos.length}`}</div>
+         <div className="text">{`${completedTodo.length}/${todos.length}`}</div>
          <button onClick={removeCompleted}>Remove completed</button>
       </div>
    )

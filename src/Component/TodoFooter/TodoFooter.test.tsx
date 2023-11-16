@@ -6,21 +6,19 @@ import userEvent from "@testing-library/user-event";
 const removeCompleted = jest.fn();
 const todos:TodoType[] = todosData;
 const completed = todos.filter(todo => todo.completed)
-const cmpletedTest = [todos[0], todos[1]];
+const setTodos = jest.fn();
 
 describe("Todo Footer Component", () => {
    test("Todo Footer render", () => {
-      render(<TodoFooter removeCompleted={removeCompleted} todos={todos} completed={completed} />)
+      render(<TodoFooter setTodos={setTodos} todos={todos}/>)
       expect(screen.getByText(/remove completed/i)).toBeInTheDocument()
    });
    test("todos length", () => {
-      render(<TodoFooter removeCompleted={removeCompleted} todos={todos} completed={completed} />)
+      render(<TodoFooter setTodos={setTodos} todos={todos}/>)
       expect(screen.getByText(`${completed.length}/${todos.length}`)).toBeInTheDocument()
    });
    test("RemoveCompleted fn test", () => {
-      render(<TodoFooter removeCompleted={removeCompleted} todos={todos} completed={cmpletedTest} />)
+      render(<TodoFooter setTodos={setTodos} todos={todos} />)
       userEvent.click(screen.getByRole("button"));
-      // expect(screen.getByText(/html/i)).not.toBeInTheDocument();
-      // expect(screen.getByText(/css/i)).not.toBeInTheDocument();
    })
 })
