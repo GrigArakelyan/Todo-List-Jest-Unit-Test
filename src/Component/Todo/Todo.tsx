@@ -6,8 +6,6 @@ type TodoProps = {
    todo: TodoType,
    todos: TodoType[];
    setTodos:React.Dispatch<React.SetStateAction<TodoType[]>>;
-   // removeTodo: (id: number) => void,
-   // handleChecked: (id:number) => void,
 }
 
 const Todo:FC<TodoProps> = ({todo, todos, setTodos}) => {

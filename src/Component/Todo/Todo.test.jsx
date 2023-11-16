@@ -4,11 +4,11 @@ import { todosData } from "../../todos"
 
 
 const todo = todosData[0];
-const handleChecked = jest.fn()
+const setTodo = jest.fn()
 
 describe("Todo test", () => {
    test("Todo render", () => {
-      render(<Todo todo={todo}/>)
+      render(<Todo todo={todo} setTodos={setTodo} todos={todosData}/>)
       expect(screen.getByText(/html/i)).toBeInTheDocument();
    });
    test("Todo checkbox test", () => {
